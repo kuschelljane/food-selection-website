@@ -18,9 +18,9 @@ export default function Order({sizeSelectedName, toppingsSelectedNames, totalPri
                 </div>
                 <div className={`p-4`}>
                     <p className="font-semibold capitalize">{sizeSelectedName} Acai Bowl</p>
-                    <p className="font-semibold text-custom-red mb-4">PHP {totalPrice.toFixed(2)}</p>
+                    <p className="font-semibold text-custom-red mb-4">PHP {totalPrice ? totalPrice.toFixed(2) : '0.00'}</p>
                     <p className="font-semibold">Toppings:</p>
-                    {toppingsSelectedNames.map((ingredient, index) => (
+                    {toppingsSelectedNames?.map((ingredient, index) => (
                         <p key={index} className="capitalize flex items-center space-x-1"><LuNut /> <span>{ingredient.name}</span></p>
                     ))}
                 </div>
