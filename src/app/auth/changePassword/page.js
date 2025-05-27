@@ -48,6 +48,16 @@ export default function Page() {
             return () => clearTimeout(timer);
         }
     },[error]); 
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.hash.replace('#', ''));
+        const accessToken = params.get('access_token');
+        const type = params.get('type');
+        
+        if (type === "recovery" && accessToken) {
+            router.push("/auth/changePassword"); 
+        }
+    }, []);
     
     return (
         <div className="bg-gray-50 min-h-screen flex items-center justify-center px-4 text-sm">
